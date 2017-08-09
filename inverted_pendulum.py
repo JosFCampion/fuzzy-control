@@ -38,12 +38,12 @@ if __name__ == '__main__':
     y = []
     u = []
     for i in range(nsteps):
-        g0 = 1
-        g1 = 1
-        g2 = 1
+        g0 = 2.
+        g1 = 0.1
+        g2 = 5.
         e = -inv_pend.x[0]
         de = -inv_pend.x[1]
-        c_input = [g0 * e, g1 * de]
+        c_input = g2 * np.array([g0 * e, g1 * de])
         ui = fuz_ctrl.calc_ucrisp(c_input)
         inv_pend.rk4_step(inv_pend.x, ui)
         u.append(ui)
